@@ -7,3 +7,4 @@ spec:
     app: web
   ports:
     - port: 80
+  type: ClusterIP
