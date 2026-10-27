@@ -1,0 +1,21 @@
+name: Validate manifests
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lint YAML
+        run: |
+          pip install yamllint
+          yamllint -c .yamllint *.yaml
+
+      - name: Validate Kubernetes schemas
+        run: |
+          curl -sSL https://github.com/yannh/kubeconform/releases/latest/download/kubeconform-linux-amd64.tar.gz | tar xz
+          ./kubeconform -strict -summary *.yaml

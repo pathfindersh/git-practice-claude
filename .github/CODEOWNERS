@@ -1,0 +1,8 @@
+# Default owner for everything
+*              @path1devops0@gmail.com
+
+# Kubernetes manifests
+*.yaml         @path1devops0@gmail.com
+
+# CI and repo configuration
+/.github/      @path1devops0@gmail.com
